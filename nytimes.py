@@ -43,8 +43,6 @@ class NYTimesSource(object):
             # into a single level structure (flat structure).
             
             fitems = []
-            cflat = 0
-            cdict = 0
             
             for k, v in d.items():
                 new_key = parent_key + sep + k if parent_key else k
@@ -56,10 +54,8 @@ class NYTimesSource(object):
                     for i in range(len(v)):
                         fitems.extend(source.flat_dict(v[i], new_key, sep=sep).items())
 
-
                 else:
                     fitems.append((new_key, v))
-                    cflat = cflat+1
     
             return dict(fitems)
 
